@@ -1,0 +1,175 @@
+@import "tailwindcss";
+
+@theme {
+  --color-neon-orange: #ff5a00;
+  --color-neon-orange-alt: #ff8c00;
+  --color-bg-deep: #050505;
+  --color-bg-dark: #0a0a0a;
+}
+
+@layer utilities {
+  .animate-marquee {
+    animation: marquee 40s linear infinite;
+  }
+  .animate-marquee:hover {
+    animation-play-state: paused;
+  }
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(-50% - 1rem)); }
+  }
+
+  .glass {
+    @apply bg-white/5 backdrop-blur-md border border-white/10;
+  }
+  .neon-border {
+    @apply border border-transparent;
+    background: linear-gradient(#050505, #050505) padding-box,
+                linear-gradient(45deg, var(--color-neon-orange), var(--color-neon-orange-alt)) border-box;
+  }
+  .glow-orange {
+    box-shadow: 0 0 20px rgba(255, 90, 0, 0.5);
+  }
+  .glow-orange-alt {
+    box-shadow: 0 0 20px rgba(255, 140, 0, 0.5);
+  }
+  .text-glow {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-bg-deep);
+  color: white;
+  min-height: 100vh;
+  overflow-x: hidden;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+/* Light Mode Overrides */
+html.light-mode, html.light-mode body {
+  background-color: #f7f9fc !important;
+  color: #1a1a1a !important;
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+html.light-mode .light-bg {
+  background-color: #f7f9fc !important;
+}
+
+html.light-mode .light-blob {
+  background-color: #ff8c00 !important;
+  mix-blend-mode: multiply !important;
+  opacity: 0.15 !important;
+}
+
+html.light-mode .light-blob-alt {
+  background-color: #0ea5e9 !important;
+  mix-blend-mode: multiply !important;
+  opacity: 0.15 !important;
+}
+
+html.light-mode .light-blob-purple {
+  background-color: #a855f7 !important;
+  mix-blend-mode: multiply !important;
+  opacity: 0.15 !important;
+}
+
+html.light-mode .light-grid {
+  background-image: linear-gradient(rgba(0,0,0,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.04) 1px, transparent 1px) !important;
+}
+
+html.light-mode .light-noise {
+  opacity: 0.08 !important;
+}
+
+html.light-mode .text-white {
+  color: #1a1a1a !important;
+}
+
+html.light-mode .text-gray-400 {
+  color: #555 !important;
+}
+
+html.light-mode .text-gray-300 {
+  color: #666 !important;
+}
+
+html.light-mode .glass {
+  background: rgba(255, 255, 255, 0.70) !important;
+  border-color: rgba(0, 0, 0, 0.1) !important;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+html.light-mode .bg-\[\#0a0a0a\] {
+  background-color: #ffffff !important;
+}
+
+html.light-mode .bg-\[\#050505\] {
+  background-color: #f3f4f6 !important;
+}
+
+html.light-mode .bg-white\/5 {
+  background-color: rgba(0,0,0,0.03) !important;
+}
+
+html.light-mode .border-white\/10 {
+  border-color: rgba(0,0,0,0.08) !important;
+}
+
+html.light-mode .border-\[\#ff8c00\]\/30 {
+  border-color: rgba(255, 140, 0, 0.4) !important;
+}
+
+html.light-mode input, html.light-mode textarea {
+  color: #111 !important;
+}
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-bg-deep);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.minimal-bg {
+  background: linear-gradient(-45deg, #050505, #0a0a0a, #030303, #080808);
+  background-size: 400% 400%;
+  animation: bgGradientPulse 15s ease infinite;
+}
+
+@keyframes bgGradientPulse {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+html.light-mode .minimal-bg {
+  background: linear-gradient(-45deg, #ffffff, #f4f6fa, #f9fafb, #f0f4f8);
+  background-size: 400% 400%;
+}
+
+html.light-mode .light-spotlight {
+  background-color: #ff8c00 !important;
+  opacity: 0.08 !important;
+  mix-blend-mode: multiply !important;
+}
+
+html.light-mode .light-mode-grid {
+  background-image: linear-gradient(rgba(0,0,0,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.02) 1px, transparent 1px) !important;
+}
